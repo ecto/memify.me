@@ -3,7 +3,7 @@ var express = require('express'),
     redis = require('redis-node'),
     db = redis.createClient(),
     FacebookClient = require("facebook-client").FacebookClient,
-    fb = new FacebookClient('167163713331507', '1edf6d3e7715c3779cfeffb6a19f872a'),
+    fb = new FacebookClient('key', 'secret'),
     exec  = require('child_process').exec,
     gm = require('gm');
 
