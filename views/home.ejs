@@ -1,0 +1,33 @@
+<img src="/ss.jpg" style="float: right; width: 475px; position: relative; top: 15px;" />
+
+<div style="text-align: center; width: 475px;">
+	<% for (var i in messages) { var message = messages[i]; %>
+		<% for (var j in message) { %>
+			<p style="color: red;"><%- message[j] %></p>
+		<% } %>
+	<% } %>
+
+        <h2>make memes of your facebook friends</h2>
+
+        <p>easily craft hilarious memes with your friends' pictures</p>
+
+        <p>see memes people have made of you</p>
+
+        <p>share your favorites</p>
+
+        <p>it's easy and fun!</p>
+
+	<p><a class="button" href="javascript:login()">Start now!</a></p>
+</div>
+
+<script type="text/javascript">
+function login(){
+	FB.login(function(response) {
+	  if (response.session) {
+	    if (response.perms) {
+		document.location = document.location.href;
+	    }
+	  }
+	}, {perms:'user_photos,friends_photos,publish_stream'});
+}
+</script>

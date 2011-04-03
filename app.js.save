@@ -1,0 +1,15 @@
+var express = require('express'),
+    app = express.createServer();
+
+
+app.set('views', __dirname + '/views');
+
+app.use(
+	express.staticProvider(__dirname + '/static');
+);
+
+app.get('/', function(req, res){
+	res.send('Hello World');
+});
+
+app.listen(3000);

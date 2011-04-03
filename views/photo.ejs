@@ -1,0 +1,23 @@
+<img src="<%- photo.source %>" style="width: 500px; float: right;" />
+
+<div style="text-align: center;">
+	<h2>What do you want the picture to say?</h2>
+
+	<p>Keep it short and sweet.</p>
+
+	<form action="/save" method="post" style="text-align: center;">
+		<input type="hidden" name="id" value="<%- photo.id %>">
+		<p><strong>Top</strong><br /><input type="text" name="line1" style="padding: 10px; font-size: 1.3em; width: 400px;" /></p>
+		<p><strong>Bottom</strong><br /><input type="text" name="line2" style="padding: 10px; font-size: 1.3em; width: 400px;" /></p>
+		<input type="submit" value="Generate" style="font-size: 1.5em;">
+	</form>
+</div>
+
+<br clear="all" />
+<hr />
+<h2>Other memes created with this picture:</h2>
+<p><% if (memes.length > 0) { %>
+        <% for (var i in memes) { %>
+        <a href="/meme/<%- memes[i] %>"><img src="/images/<%- memes[i] %>.jpg" height="50" /></a>
+        <% } %>
+<% } else { %>None.<% } %></p>

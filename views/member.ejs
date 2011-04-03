@@ -1,0 +1,82 @@
+<% if (member.background == 'custom') { %>
+<style>
+body {
+	background-image: url('/images/backgrounds/<%- member.username %>.jpg');
+}
+#footer {
+	-webkit-transition: background 0.2s linear;
+	-moz-transition: background 0.2s linear;
+}
+#footer:hover {
+	background: #eee;
+	border: 1px solid #ddd;
+	border-top: 0;
+}
+</style>
+<% } %>
+
+<a name="fb_share" style="float: right;"></a>
+
+<div style="float: left; text-align: center;">
+	<% var image = member.active == 'true' ? member.username + '.jpg' : 'default.png'; %>
+	<a href="/images/<%- image %>" target="new">
+		<img src="/images/<%- image %>" style="width: 250px; margin-bottom: 15px; border: 0;" />
+	</a>
+	<br />
+	rating: <strong><%- member.rating %></strong><br />
+	views: <strong><%- member.views %></strong><br />
+	rounds: <strong><%- member.rounds %></strong><br />
+	wins: <strong><%- member.wins %></strong><br />
+	losses: <strong><%- member.losses %></strong><br />
+	ratio: <strong><%- Math.round(member.wins / member.losses * 100) %>%</strong><br /><br />
+</div>
+
+<div style="float: left; margin-left: 15px;">
+	<h1 style="margin: 0;"><%- member.username %></h1>
+	<p style="margin: 5px 0 30px;"><%- member.bio %></p>
+	<% var ownPage = false;
+	if (user) {
+		if (user.username == member.username) {
+			ownPage = true;
+		}
+	}
+	if (ownPage) { %>
+		<p><strong>Post on your wall</strong></p>
+	<% } else { %>
+		<p><strong>Write something about <%- member.username %></strong></p>
+	<% } %>
+	<form action="/comment/<%- member.id %>" method="post" id="commentForm">
+		<textarea cols="40" rows="3" name="comment" style="font-size: 1.3em;" id="commentBox"></textarea><br /><br />
+		<input type="submit" class="green" value="comment" />
+	</form>
+</div>
+
+<br clear="all" />
+
+<div id="comments">
+	<% if (!comments) { %>
+		<hr />
+		<% var pronoun = member.gender == 'm' ? 'his' : 'her'; %>
+		<p><%- member.username %> has nothing on <%- pronoun %> wall. Be a pal and comment!</p>
+	<% } else {
+		for (var i in comments) { %>
+			<hr />
+			<p style="vertical-align: middle;">
+				<a href="/<%- comments[i].from %>"><img src="/images/<%- comments[i].from %>.jpg" style="float: left; border: 0; margin-right: 15px;" width="50"> <%- comments[i].from %></a>
+				said:<br /><br /> <span style="font-size: 1.3em;"><%- comments[i].comment %></span>
+			</p>
+	<%	}
+	} %>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#commentBox").keyup(function(event){
+		if (event.keyCode == 13) {
+			$("#commentForm").submit();
+			return false;
+		}
+	});
+});
+</script>
+<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>

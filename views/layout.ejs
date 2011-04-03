@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+	<script type="text/javascript">
+		var _sf_startpt=(new Date()).getTime();
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-5208661-11']);
+		  _gaq.push(['_trackPageview']);
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+	</script>
+	<title>memify.me - the facebook friend meme generator</title>
+	<link href="/style.css" media="screen" rel="stylesheet" type="text/css" /> 
+	<!--[if !IE]><!-->
+        <link rel="stylesheet" type="text/css" href="/forms.css" />
+	<!--<![endif]-->
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" type="text/javascript"></script>
+	<script src="http://connect.facebook.net/en_US/all.js"></script>
+	<script>
+	$(document).ready(function(){
+		FB.init({ appId: '167163713331507', status: true, cookie: true, xfbml: true });
+		FB.Event.subscribe('auth.sessionChange', function(response) {
+			document.location = document.location.href;
+		});
+	});
+	</script>
+</head>
+<body>
+<div id="fb-root"></div>
+<div id="header"><div id="headwrap">
+	<a href="/" id="logo">memify.me</a>
+	<div id="nav">
+		<a href="/create">create</a>
+		<a href="/browse">browse</a>
+		<fb:login-button perms="user_photos,friends_photos,publish_stream" autologoutlink="true"></fb:login-button>
+
+		<% if (!user) { %>
+		<% } %>
+	</div>
+</div></div>
+
+<div id="content">
+	<%- body %>
+	<br clear="all"/>
+</div>
+
+<div id="footer">
+	<a href="http://campedersen.com/">Made by Cam Pedersen</a>
+</div>
+
+<script type="text/javascript">
+	var _sf_async_config={uid:17172,domain:"memify.me"};
+	(function(){
+	  function loadChartbeat() {
+	    window._sf_endpt=(new Date()).getTime();
+	    var e = document.createElement('script');
+	    e.setAttribute('language', 'javascript');
+	    e.setAttribute('type', 'text/javascript');
+	    e.setAttribute('src',
+	       (("https:" == document.location.protocol) ? "https://a248.e.akamai.net/chartbeat.download.akamai.com/102508/" : "http://static.chartbeat.com/") +
+	       "js/chartbeat.js");
+	    document.body.appendChild(e);
+	  }
+	  var oldonload = window.onload;
+	  window.onload = (typeof window.onload != 'function') ?
+	     loadChartbeat : function() { oldonload(); loadChartbeat(); };
+	})();
+</script>
+
+</body>
+</html>

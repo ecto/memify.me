@@ -1,0 +1,14 @@
+<div style="width: 900px; margin: 0 auto; text-align: center;">
+	<h2>top <%- list.length %> members by rating</h2><br /><br />
+	<% for (var i in list) {
+		var current = list[i]; %>
+
+	<div style="float: left; width: 300px; height: 420px; text-align: center;">
+		<a href="/<%- current[0] %>" class="battle">
+			<img src="/images/<%- current[0] %>.jpg" style="border: 0;" width="250" /><br /><br />
+		</a>
+		<%- current[0] %> @ <%- current[1] %><br /><br />
+	</div>
+
+	<% } %>
+</div>

@@ -1,0 +1,20 @@
+<h2>My Memes</h2>
+<p><% if (from.length > 0) { %>
+        <% for (var i in from) { %>
+        <a href="/meme/<%- from[i] %>"><img src="/images/<%- from[i] %>.jpg" height="50" /></a>
+        <% } %>
+<% } else { %>None.<% } %></p>
+
+<h2>Memes of me</h2>
+<p><% if (to.length > 0) { %>
+        <% for (var i in to) { %>
+        <a href="/meme/<%- to[i] %>"><img src="/images/<%- to[i] %>.jpg" height="50" /></a>
+        <% } %>
+<% } else { %>None.<% } %></p>
+
+<h2>Memes my friends made</h2>
+<p><% if (friends.length > 0) { %>
+        <% for (var i in friends) { %>
+        <a href="/meme/<%- friends[i] %>"><img src="/images/<%- friends[i] %>.jpg" height="50" /></a>
+        <% } %>
+<% } else { %>None.<% } %></p>

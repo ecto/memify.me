@@ -1,0 +1,35 @@
+<div style="width: 300px; padding: 20px; float: right; text-align: right;">
+	<div style="position: fixed;">
+		Search: <input type="text" id="search" style="width: 200px;" /><br /><br /><br />
+		<fb:like href="http://memify.me/" show_faces="true" width="280"></fb:like>
+	</div>
+</div>
+
+<h2>Yo <%- user.first_name %>! Select a friend to get started.</h2>
+
+<p><a href="/friend/<%- user.id %>">I want to make a meme of myself!</a></p>
+
+<div id="friends">
+	<% for (var i in friends) { %>
+	<span class="friend"><a href="/friend/<%- friends[i].id %>"><%- friends[i].name %></a><br /></span>
+	<% } %>
+</div>
+
+<script type="text/javascript">
+
+$.extend($.expr[':'], {
+  'containsi': function(elem, i, match, array)
+  {
+    return (elem.textContent || elem.innerText || '').toLowerCase()
+    .indexOf((match[3] || "").toLowerCase()) >= 0;
+  }
+});
+
+$(document).ready(function(){
+	$("#search").keyup(function(){
+		$(".friend").hide();
+		$(".friend:containsi('" + $(this).val() + "')").show();
+	});
+});
+
+</script>

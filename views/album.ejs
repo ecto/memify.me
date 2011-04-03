@@ -1,0 +1,9 @@
+<p><a href="javascript:history.go(-1)">&larr; back to albums</a></p>
+
+<h2>Step 3: Select a picture</h2>
+
+<p>Viewing <%- album.from.name %>'s <strong><%- album.name %></strong> album</p>
+
+<% for (var i in photos) { %>
+<a href="/photo/<%- photos[i].id %>"><img src="<%- photos[i].picture %>" /></a>
+<% } %>

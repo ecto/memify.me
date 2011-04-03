@@ -1,0 +1,26 @@
+<p><a href="javascript:history.go(-1)">&larr; back to friends</a></p>
+
+<h2>Step 2: Select an album</h2>
+
+<p>Viewing <strong><%- friend.name %></strong>'s albums</p>
+
+<% for (var i in albums) { %>
+<a href="/album/<%- albums[i].id %>"><%- albums[i].name %></a><br />
+<% } %>
+
+<br clear="all" />
+<hr />
+
+<h2>Memes of <%- friend.name %></h2>
+<p><% if (to.length > 0) { %>
+        <% for (var i in to) { %>
+        <a href="/meme/<%- to[i] %>"><img src="/images/<%- to[i] %>.jpg" height="50" /></a>
+        <% } %>
+<% } else { %>None.<% } %></p>
+
+<h2>Memes by <%- friend.name %></h2>
+<p><% if (from.length > 0) { %>
+        <% for (var i in from) { %>
+        <a href="/meme/<%- from[i] %>"><img src="/images/<%- from[i] %>.jpg" height="50" /></a>
+        <% } %>
+<% } else { %>None.<% } %></p>
